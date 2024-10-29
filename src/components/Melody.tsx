@@ -26,7 +26,7 @@ function Sound({ sound, update, remove, play }: {
   }
 
   return (
-    <li>
+    <li className="sound">
       note: {sound.note} duration: {sound.duration.toString()}
       <button onClick={() => setFormToggle(!formToggle)}>
         {formToggle ? 'キャンセル' : '編集'}
@@ -46,7 +46,7 @@ export default function Melody({ melody, updateMelody, playByIndex }: {
   playByIndex: (index: number) => Promise<void>
 }) {
   return (
-    <ul>{
+    <ul className="melody">{
       melody.map(({ key, ...sound }, i) => {
         const updateSound = (sound: Omit<Sound, "key">) => {
           melody[i] = { ...sound, key }

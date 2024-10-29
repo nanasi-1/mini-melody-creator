@@ -1,0 +1,39 @@
+input, select {
+  min-width: 100px;
+  min-height: 25px;
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+
+button {
+  cursor: pointer;
+  padding-inline: 10px;
+  padding-block: 5px;
+
+  background-color: #45b3e6;
+  border: none;
+  border-radius: 5px;
+  
+  color: white;
+  font-size: 0.9rem;
+
+  &:not(:last-child) {
+    margin-right: 3px;
+  }
+}
+
+.melody {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sound {
+  background-color: #f5f5f5;
+  padding-block: 5px;
+  padding-inline: 10px;
+}
