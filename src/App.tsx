@@ -3,6 +3,7 @@ import Melody from "./components/Melody";
 import { useMelody, useSynth } from "./hooks";
 import * as Tone from 'tone'
 import { Sound } from "./types";
+import UpdateBpm from "./components/UpdateBpm";
 
 function App() {
   const synth = useSynth()
@@ -52,7 +53,10 @@ function App() {
       <CreateSound pushSound={pushSound} initKey={melody.length}/>
       <div>
         <h3>メニュー</h3>
-        <button onClick={reset}>全て削除</button>
+        <ul>
+          <li><UpdateBpm /></li>
+          <li><button onClick={reset}>全て削除</button></li>
+        </ul>
       </div>
     </>
   )
