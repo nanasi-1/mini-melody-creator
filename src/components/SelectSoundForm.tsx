@@ -47,6 +47,6 @@ export default function SelectSoundForm({ buttonText, onChange, defaultSound }: 
         })}
       </select>
     </div>
-    <button onClick={handleChange}>{buttonText}</button>
+    <button className="sound-change-btn" onClick={handleChange}>{buttonText}</button>
   </>)
 }

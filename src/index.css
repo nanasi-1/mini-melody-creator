@@ -27,7 +27,7 @@ button {
 .melody {
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: 8px;
   list-style-type: none;
   padding-left: 0;
 }
@@ -36,4 +36,20 @@ button {
   background-color: #f5f5f5;
   padding-block: 5px;
   padding-inline: 10px;
+
+  .text {
+    font-size: 1.05rem;
+  }
+
+  .controls {
+    margin-left: 10px;
+  }
+
+  .update-form {
+    margin-top: 8px;
+  }
+}
+
+.sound-change-btn {
+  margin-top: 5px;
 }

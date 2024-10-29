@@ -22,26 +22,30 @@ function Sound({ sound, update, remove, play }: {
   }
 
   const checkAndRemove = () => {
-    if(confirm(`${sound.note}を削除しますか？`)) remove()
+    if (confirm(`${sound.note}を削除しますか？`)) remove()
   }
 
   return (
     <li className="sound">
-      note: {sound.note} duration: {sound.duration.toString()}
-      <button onClick={() => setFormToggle(!formToggle)}>
-        {formToggle ? 'キャンセル' : '編集'}
-      </button>
-      <button onClick={checkAndRemove}>削除</button>
-      <button onClick={play}>ここから再生</button>
+      <span className="text">音程: {sound.note} 長さ: {sound.duration.toString()}</span>
+      <span className="controls">
+        <button onClick={() => setFormToggle(!formToggle)}>
+          {formToggle ? 'キャンセル' : '編集'}
+        </button>
+        <button onClick={checkAndRemove}>削除</button>
+        <button onClick={play}>ここから再生</button>
+      </span>
       {formToggle ?
-        <SelectSoundForm onChange={change} buttonText="update" defaultSound={defaultFormValue} />
+        <div className="update-form">
+          <SelectSoundForm onChange={change} buttonText="update" defaultSound={defaultFormValue} />
+        </div>
         : null}
     </li>
   )
 }
 
-export default function Melody({ melody, updateMelody, playByIndex }: { 
-  melody: MelodyData, 
+export default function Melody({ melody, updateMelody, playByIndex }: {
+  melody: MelodyData,
   updateMelody: () => void,
   playByIndex: (index: number) => Promise<void>
 }) {
@@ -63,7 +67,7 @@ export default function Melody({ melody, updateMelody, playByIndex }: {
         }
 
         return (
-          <Sound key={key} sound={sound} update={updateSound} remove={removeSound} play={play}/>
+          <Sound key={key} sound={sound} update={updateSound} remove={removeSound} play={play} />
         )
       })
     }</ul>
