@@ -17,7 +17,7 @@ function Sound({ sound, update, remove, play }: {
 
   const defaultFormValue = {
     duration: sound.duration.toString().match(/-?\d+/)?.[0] ?? '4',
-    noteLetter: sound.note.toString().match(/[A-Z#]/)?.[0] ?? 'C',
+    noteLetter: sound.note.toString().match(/[A-Z#]+/)?.[0] ?? 'C',
     noteOctave: sound.note.toString().match(/-?\d+/)?.[0] ?? '4'
   }
 

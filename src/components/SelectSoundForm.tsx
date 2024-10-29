@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { Sound } from "../types"
 
 const noteLetters = [
-  "C", "D", "E", "F", "G", "A", "B"
+  "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
 ] as const satisfies string[]
 
 const durations = [
