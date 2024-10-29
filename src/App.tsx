@@ -4,23 +4,27 @@ import { useMelody, useSynth } from "./hooks";
 import * as Tone from 'tone'
 import { Sound } from "./types";
 import UpdateBpm from "./components/UpdateBpm";
+import DownloadFile from "./components/DownloadFile";
 
 function App() {
-  const synth = useSynth()
+  const { synth, recorder } = useSynth()
   const { melody, updateMelody } = useMelody()
 
-  if (!synth) return <p>Loading...</p>
+  if (!synth || !recorder) return <p>Loading...</p>
 
-  const playByIndex = async (index: number) => {
+  const playByIndex = async (index: number): Promise<any> => { // TODO あとで修正
     if (!synth) return
     await Tone.start()
     const slicedMelody = melody.slice(index)
-
-    let allTime = Tone.now()
+    
+    const now = Tone.now()
+    let allTime = 0
     slicedMelody.forEach(({ note, duration }) => {
-      synth.triggerAttackRelease(note, duration, allTime)
+      synth.triggerAttackRelease(note, duration, allTime + now)
       allTime += Tone.Time(duration).toSeconds()
     })
+
+    return allTime
   }
 
   const pause = () => {
@@ -55,6 +59,7 @@ function App() {
         <h3>メニュー</h3>
         <ul className="menu-list">
           <li><UpdateBpm /></li>
+          <li><DownloadFile recorder={recorder} play={() => playByIndex(0)}/></li>
           <li><button onClick={reset}>全て削除</button></li>
         </ul>
       </div>

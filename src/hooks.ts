@@ -4,13 +4,16 @@ import { MelodyData } from "./types"
 
 export const useSynth = () => {
   const [synth, setSynth] = useState<Tone.Synth | null>(null)
+  const [recorder, setRecorder] = useState<Tone.Recorder | null>(null)
 
   useEffect(() => {
-    const synth = new Tone.Synth().toDestination()
+    const recorder = new Tone.Recorder()
+    const synth = new Tone.Synth().toDestination().connect(recorder)
     setSynth(synth)
+    setRecorder(recorder)
   }, [])
 
-  return synth
+  return { synth, recorder }
 }
 
 export const useMelody = () => {
