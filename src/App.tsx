@@ -33,9 +33,12 @@ function App() {
 
   return (
     <>
-      <h1>Hello World!</h1>
-      <button onClick={() => playByIndex(0)}>play</button>
-      <button onClick={pause}>pause</button>
+      <h1>ミニメロ - Mini Melody Creator</h1>
+      <p>かんたんに使えるミニ作曲アプリ</p> {/* ←さすがにセルフツッコミいれたくなってきた */}
+      <div>
+        <button onClick={() => playByIndex(0)}>play</button>
+        <button onClick={pause}>pause</button>
+      </div>
       <Melody melody={melody} updateMelody={updateMelody} playByIndex={playByIndex}/>
       <CreateSound pushSound={pushSound} />
     </>
