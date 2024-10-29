@@ -31,6 +31,12 @@ function App() {
     updateMelody()
   }
 
+  const reset = () => {
+    if(!confirm('メロディーを全て削除しますか？')) return
+    melody.splice(0, melody.length)
+    updateMelody()
+  }
+
   return (
     <>
       <div className="title">
@@ -43,6 +49,10 @@ function App() {
       </div>
       <Melody melody={melody} updateMelody={updateMelody} playByIndex={playByIndex}/>
       <CreateSound pushSound={pushSound} />
+      <div>
+        <h3>Menu</h3>
+        <button onClick={reset}>全て削除</button>
+      </div>
     </>
   )
 }
