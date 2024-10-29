@@ -2,10 +2,11 @@ import { useState } from "react";
 import type { MelodyData, Sound } from "../types";
 import SelectSoundForm, { OnChangeFunc } from "./SelectSoundForm";
 
-function Sound({ sound, update, remove }: {
+function Sound({ sound, update, remove, play }: {
   sound: Omit<Sound, "key">,
   update: (sound: Omit<Sound, "key">) => void,
-  remove: () => void
+  remove: () => void,
+  play: () => void
 }) {
   const [formToggle, setFormToggle] = useState(false)
 
@@ -31,7 +32,7 @@ function Sound({ sound, update, remove }: {
         {formToggle ? 'キャンセル' : '編集'}
       </button>
       <button onClick={checkAndRemove}>削除</button>
-      <button>ここから再生</button>
+      <button onClick={play}>ここから再生</button>
       {formToggle ?
         <SelectSoundForm onChange={change} buttonText="update" defaultSound={defaultFormValue} />
         : null}
@@ -39,9 +40,11 @@ function Sound({ sound, update, remove }: {
   )
 }
 
-export default function Melody({ melody, updateMelody }
-  : { melody: MelodyData, updateMelody: () => void }
-) {
+export default function Melody({ melody, updateMelody, playByIndex }: { 
+  melody: MelodyData, 
+  updateMelody: () => void,
+  playByIndex: (index: number) => Promise<void>
+}) {
   return (
     <ul>{
       melody.map(({ key, ...sound }, i) => {
@@ -55,8 +58,12 @@ export default function Melody({ melody, updateMelody }
           updateMelody()
         }
 
+        const play = () => {
+          playByIndex(i)
+        }
+
         return (
-          <Sound key={key} sound={sound} update={updateSound} remove={removeSound}/>
+          <Sound key={key} sound={sound} update={updateSound} remove={removeSound} play={play}/>
         )
       })
     }</ul>

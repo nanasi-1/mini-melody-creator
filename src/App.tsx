@@ -10,12 +10,13 @@ function App() {
 
   if (!synth) return <p>Loading...</p>
 
-  const play = async () => {
+  const playByIndex = async (index: number) => {
     if (!synth) return
     await Tone.start()
+    const slicedMelody = melody.slice(index)
 
     let allTime = Tone.now()
-    melody.forEach(({note, duration}) => {
+    slicedMelody.forEach(({ note, duration }) => {
       synth.triggerAttackRelease(note, duration, allTime)
       allTime += Tone.Time(duration).toSeconds()
     })
@@ -33,10 +34,10 @@ function App() {
   return (
     <>
       <h1>Hello World!</h1>
-      <button onClick={play}>play</button>
+      <button onClick={() => playByIndex(0)}>play</button>
       <button onClick={pause}>pause</button>
-      <Melody melody={melody} updateMelody={updateMelody}/>
-      <CreateSound pushSound={pushSound}/>
+      <Melody melody={melody} updateMelody={updateMelody} playByIndex={playByIndex}/>
+      <CreateSound pushSound={pushSound} />
     </>
   )
 }
