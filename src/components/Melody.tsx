@@ -5,9 +5,9 @@ export default function Melody({ melody, updateMelody }
 ) {
   return (
     <ul>{
-      melody.map(({key, note}) => {
+      melody.map(({key, note, duration}) => {
         return (
-          <li key={key}>{note}</li>
+          <li key={key}>note: {note} duration: {duration.toString()}</li>
         )
       })
     }</ul>
