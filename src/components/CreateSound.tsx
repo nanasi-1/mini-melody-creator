@@ -2,6 +2,12 @@ import { useState } from "react";
 import { Sound } from "../types";
 import SelectSoundForm, { OnChangeFunc } from "./SelectSoundForm";
 
+const defaultSound = {
+  noteLetter: 'C',
+  noteOctave: 4,
+  duration: 4
+} as const
+
 export default function CreateSound({ pushSound }: {
   pushSound: (sound: Sound) => void
 }) {
@@ -16,7 +22,7 @@ export default function CreateSound({ pushSound }: {
   return (
     <div>
       <h3>Add Sound</h3>
-      <SelectSoundForm onChange={create} buttonText="create" />
+      <SelectSoundForm onChange={create} buttonText="create" defaultSound={defaultSound}/>
     </div>
   )
 }
