@@ -53,7 +53,7 @@ function App() {
       <CreateSound pushSound={pushSound} initKey={melody.length}/>
       <div>
         <h3>メニュー</h3>
-        <ul>
+        <ul className="menu-list">
           <li><UpdateBpm /></li>
           <li><button onClick={reset}>全て削除</button></li>
         </ul>

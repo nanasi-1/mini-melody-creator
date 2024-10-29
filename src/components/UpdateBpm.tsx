@@ -13,7 +13,7 @@ export default function UpdateBpm () {
   return (
     <div>
       <label htmlFor="update-bpm">BPM: </label>
-      <input name="update-bpm" type="number" defaultValue={120} min={1} max={1000} ref={bpmRef}/>
+      <input id="update-bpm" type="number" defaultValue={120} min={1} max={1000} ref={bpmRef}/>
       <button onClick={update}>更新</button>
     </div>
   )
