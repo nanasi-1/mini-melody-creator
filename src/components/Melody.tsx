@@ -47,7 +47,7 @@ function Sound({ sound, update, remove, play }: {
 export default function Melody({ melody, updateMelody, playByIndex }: {
   melody: MelodyData,
   updateMelody: () => void,
-  playByIndex: (index: number) => Promise<void>
+  playByIndex: (index: number) => Promise<number>
 }) {
   return (
     <ul className="melody">{

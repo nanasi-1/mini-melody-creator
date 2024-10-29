@@ -12,8 +12,7 @@ function App() {
 
   if (!synth || !recorder) return <p>Loading...</p>
 
-  const playByIndex = async (index: number): Promise<any> => { // TODO あとで修正
-    if (!synth) return
+  const playByIndex = async (index: number) => {
     await Tone.start()
     const slicedMelody = melody.slice(index)
     
