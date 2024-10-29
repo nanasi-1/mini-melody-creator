@@ -59,7 +59,7 @@ function App() {
         <h3>メニュー</h3>
         <ul className="menu-list">
           <li><UpdateBpm /></li>
-          <li><DownloadFile recorder={recorder} play={() => playByIndex(0)}/></li>
+          <li><DownloadFile recorder={recorder} play={() => playByIndex(0)} pause={pause}/></li>
           <li><button onClick={reset}>全て削除</button></li>
         </ul>
       </div>
