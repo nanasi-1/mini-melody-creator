@@ -50,7 +50,7 @@ function App() {
       <Melody melody={melody} updateMelody={updateMelody} playByIndex={playByIndex}/>
       <CreateSound pushSound={pushSound} />
       <div>
-        <h3>Menu</h3>
+        <h3>メニュー</h3>
         <button onClick={reset}>全て削除</button>
       </div>
     </>

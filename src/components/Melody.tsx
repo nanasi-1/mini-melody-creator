@@ -37,7 +37,7 @@ function Sound({ sound, update, remove, play }: {
       </span>
       {formToggle ?
         <div className="update-form">
-          <SelectSoundForm onChange={change} buttonText="update" defaultSound={defaultFormValue} />
+          <SelectSoundForm onChange={change} buttonText="更新" defaultSound={defaultFormValue} />
         </div>
         : null}
     </li>

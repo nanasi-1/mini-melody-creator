@@ -21,8 +21,8 @@ export default function CreateSound({ pushSound }: {
 
   return (
     <div>
-      <h3>Add Sound</h3>
-      <SelectSoundForm onChange={create} buttonText="create" defaultSound={defaultSound}/>
+      <h3>音を追加</h3>
+      <SelectSoundForm onChange={create} buttonText="追加" defaultSound={defaultSound}/>
     </div>
   )
 }
