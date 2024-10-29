@@ -23,7 +23,7 @@ export default function SelectSoundForm({ buttonText, onChange, defaultSound }: 
   const handleChange = () => {
     const sound = {
       note: `${noteLetterRef.current?.value ?? 'C'}${noteOctaveRef.current?.value ?? 4}`,
-      duration: `${durationRef.current?.value}n` ?? '4n'
+      duration: `${durationRef.current?.value ?? 4}n`
     }
     onChange(sound)
   }
