@@ -10,13 +10,19 @@ function App() {
 
   if (!synth) return <p>Loading...</p>
 
-  const playSound = () => {
+  const play = async () => {
     if (!synth) return
-    melody.forEach(({note, duration}, i) => {
-      const time = Tone.now() + i * Tone.Time(duration).toSeconds()
-      synth.triggerAttackRelease(note, duration, time)
+    await Tone.start()
+
+    let allTime = Tone.now()
+    melody.forEach(({note, duration}) => {
+      synth.triggerAttackRelease(note, duration, allTime)
+      allTime += Tone.Time(duration).toSeconds()
     })
-    Tone.start()
+  }
+
+  const pause = () => {
+    synth.triggerRelease()
   }
 
   const pushSound = (sound: Sound) => {
@@ -27,7 +33,8 @@ function App() {
   return (
     <>
       <h1>Hello World!</h1>
-      <button onClick={playSound}>play</button>
+      <button onClick={play}>play</button>
+      <button onClick={pause}>pause</button>
       <Melody melody={melody} updateMelody={updateMelody}/>
       <CreateSound pushSound={pushSound}/>
     </>
