@@ -34,6 +34,7 @@ function App() {
   const reset = () => {
     if(!confirm('メロディーを全て削除しますか？')) return
     melody.splice(0, melody.length)
+    localStorage.removeItem('mini-melody-creator')
     updateMelody()
   }
 

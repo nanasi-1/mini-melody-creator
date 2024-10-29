@@ -18,5 +18,19 @@ export const useMelody = () => {
   const updateMelody = () => {
     setMelody([...melody])
   }
+
+  useEffect(() => {
+    if(melody.length > 0) return
+    const storageMelodyJson = localStorage.getItem('mini-melody-creator')
+    if(!storageMelodyJson) return
+    setMelody(JSON.parse(storageMelodyJson))
+  }, [])
+
+  useEffect(() => {
+    if(melody.length <= 0) return
+    const jsonMelody = JSON.stringify(melody.map(({duration, note}) => ({ duration, note })))
+    localStorage.setItem('mini-melody-creator', jsonMelody)
+  },  [melody])
+
   return { melody, updateMelody }
 }
