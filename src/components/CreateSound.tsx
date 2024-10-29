@@ -42,7 +42,7 @@ export default function CreateSound({ pushSound }: {
       </div>
       <div>
         <label htmlFor="create-sound-duration">長さ: </label>
-        <select id="create-sound-note-letter" defaultValue={4} ref={durationRef}>
+        <select id="create-sound-duration" defaultValue={4} ref={durationRef}>
           {durations.map(letter => {
             return <option key={letter} value={letter}>{letter}</option>
           })}
