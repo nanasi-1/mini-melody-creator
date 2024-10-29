@@ -23,7 +23,9 @@ export const useMelody = () => {
     if(melody.length > 0) return
     const storageMelodyJson = localStorage.getItem('mini-melody-creator')
     if(!storageMelodyJson) return
-    setMelody(JSON.parse(storageMelodyJson))
+
+    const raw: MelodyData = JSON.parse(storageMelodyJson)
+    setMelody(raw.map((sound, key) => ({...sound, key})))
   }, [])
 
   useEffect(() => {

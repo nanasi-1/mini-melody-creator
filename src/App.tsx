@@ -49,7 +49,7 @@ function App() {
         <button onClick={pause}>停止</button>
       </div>
       <Melody melody={melody} updateMelody={updateMelody} playByIndex={playByIndex}/>
-      <CreateSound pushSound={pushSound} />
+      <CreateSound pushSound={pushSound} initKey={melody.length}/>
       <div>
         <h3>メニュー</h3>
         <button onClick={reset}>全て削除</button>

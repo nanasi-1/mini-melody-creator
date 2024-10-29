@@ -8,10 +8,11 @@ const defaultSound = {
   duration: 4
 } as const
 
-export default function CreateSound({ pushSound }: {
-  pushSound: (sound: Sound) => void
+export default function CreateSound({ pushSound, initKey }: {
+  pushSound: (sound: Sound) => void,
+  initKey: number
 }) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(initKey)
 
   const create: OnChangeFunc = ({ note, duration }) => {
     const sound = { key: count, note, duration }
